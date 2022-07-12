@@ -1,0 +1,60 @@
+angus@angus-VirtualBox:~/Desktop/OperationSystem/copy.c-master$ strace ./copy.o
+execve("./copy.o", ["./copy.o"], 0x7fffe5ec8db0 /* 56 vars */) = 0
+brk(NULL)                               = 0x55a18512f000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffe627a40e0) = -1 EINVAL (Invalid argument)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=67572, ...}) = 0
+mmap(NULL, 67572, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f52ec7a2000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360A\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\237\333t\347\262\27\320l\223\27*\202C\370T\177"..., 68, 880) = 68
+fstat(3, {st_mode=S_IFREG|0755, st_size=2029560, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f52ec7a0000
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\237\333t\347\262\27\320l\223\27*\202C\370T\177"..., 68, 880) = 68
+mmap(NULL, 2037344, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f52ec5ae000
+mmap(0x7f52ec5d0000, 1540096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7f52ec5d0000
+mmap(0x7f52ec748000, 319488, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19a000) = 0x7f52ec748000
+mmap(0x7f52ec796000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7f52ec796000
+mmap(0x7f52ec79c000, 13920, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f52ec79c000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7f52ec7a1540) = 0
+mprotect(0x7f52ec796000, 16384, PROT_READ) = 0
+mprotect(0x55a184c1d000, 4096, PROT_READ) = 0
+mprotect(0x7f52ec7e0000, 4096, PROT_READ) = 0
+munmap(0x7f52ec7a2000, 67572)           = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0), ...}) = 0
+brk(NULL)                               = 0x55a18512f000
+brk(0x55a185150000)                     = 0x55a185150000
+fstat(0, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0), ...}) = 0
+write(1, "Enter name of source file: ", 27Enter name of source file: ) = 27
+read(0, 123.txt
+"123.txt\n", 1024)              = 8
+openat(AT_FDCWD, "123.txt", O_RDONLY)   = 3
+write(1, "Enter name of destination file: ", 32Enter name of destination file: ) = 32
+read(0, duplicate.txt
+"duplicate.txt\n", 1024)        = 14
+openat(AT_FDCWD, "duplicate.txt", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "123.txt", O_RDONLY)   = 4
+openat(AT_FDCWD, "duplicate.txt", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 5
+fstat(4, {st_mode=S_IFREG|0777, st_size=45, ...}) = 0
+read(4, "This content will be copied to t"..., 4096) = 45
+fstat(5, {st_mode=S_IFREG|0777, st_size=0, ...}) = 0
+read(4, "", 4096)                       = 0
+write(1, "\n", 1
+)                       = 1
+write(1, "Success!\n", 9Success!
+)               = 9
+close(4)                                = 0
+write(5, "This content will be copied to t"..., 45) = 45
+close(5)                                = 0
+lseek(0, -1, SEEK_CUR)                  = -1 ESPIPE (Illegal seek)
+exit_group(0)                           = ?
++++ exited with 0 +++
+angus@angus-VirtualBox:~/Desktop/OperationSystem/copy.c-master$ 
+
